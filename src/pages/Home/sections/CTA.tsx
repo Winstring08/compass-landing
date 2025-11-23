@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { CrownIcon, FlashIcon } from "../../../components/Icons";
+import { FlashIcon } from "../../../components/Icons";
 import { motion, type Variants } from "framer-motion";
 import { button } from "@/styles/recipes/button";
 import { card } from "@/styles/recipes/card";
@@ -28,14 +28,14 @@ const CTA: React.FC = () => {
           {/* 카드 레시피 사용 */}
           <div className={card({ tone: "cta", padding: "xl", align: "center" }).root()}>
             {/* 아이콘 애니메이션 (기존 유지) */}
-            <motion.div
+            <motion.div 
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, amount: 0.6 }}
               variants={{ hidden: {}, show: { transition: { when: "beforeChildren" } } }}
               className="text-center"
             >
-              <Badge appearance="soft"/>
+              <Badge intent = "crown" elevated={true}/>
 
               {/* 타이틀은 고정 */}
               <h2 className="text-3xl font-bold mt-8 mb-4 text-text-light dark:text-white">

@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import {
   DownloadIcon, CheckIcon, DeviceIcon, CloudIcon,
   WindowsIcon, AppleIcon, LinuxIcon, AndroidIcon,
-  ShieldIcon, DatabaseIcon, RocketIcon, CrownIcon,
-  FlashIcon
+  ShieldIcon, DatabaseIcon, RocketIcon, CrownIcon
 } from '../../components/Icons';
 import { button } from '@/styles/recipes/button';
 

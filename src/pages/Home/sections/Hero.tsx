@@ -1,6 +1,6 @@
-import { DownloadIcon, KeyIcon, SparklesIcon } from "@/components/Icons";
-import Badge from "@/components/ui/Badge";
+import { CrownIcon, DownloadIcon, KeyIcon } from "@/components/Icons";
 import { Button } from "@/components/ui/Button";
+import { FeatureBadge } from "@/components/ui/FeatureBadge";
 import SecurityPolygonScene from "@/pages/Home/components/SecurityPolygon";
 import { motion, type Variants } from "framer-motion";
 import { useNavigate } from "react-router-dom";
@@ -39,59 +39,61 @@ const Hero = () => {
         <SecurityPolygonScene />
       </div>
 
-        {/* 간격 조절용 div */}
-        <motion.div
-          className="relative flex flex-col items-center gap-10"
-          variants={heroParent}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {/* 배지 */}
-          <motion.div variants={heroItem}>
-            <span className="flex items-center gap-3 px-2 py-0.5 rounded-full border border-brand/20 bg-brand/10 dark:border-brand/30 dark:bg-brand/20">
-              <Badge intent="crown" size="ss" appearance="ghost" className="" />
-              <span className="text-xs font-bold tracking-wider text-brand">
-                PASSWORD MANAGER
-              </span>
-            </span>
-          </motion.div>
+      {/* 간격 조절용 div */}
+      <motion.div
+        className="relative flex flex-col items-center gap-10"
+        variants={heroParent}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
 
-          {/* 내용 */}
-          <motion.h1
-            variants={heroItem}
-            className="text-6xl lg:text-7xl font-black leading-tight text-text-light dark:text-white"
-          >
-            비밀번호 관리의<br />
-            <span className="gradient-text">새로운 표준</span>
-          </motion.h1>
-
-          {/* 버튼 */}
-          <motion.div
-            variants={heroItem}
-            className="flex flex-col sm:flex-row justify-center gap-4"
-          >
-            <Button
-              intent="primary"
-              size="lg"
-              onClick={() => navigate("/download")}
-              leftIcon={<DownloadIcon />}
-              aria-label="다운로드 페이지로 이동"
-            >
-              무료로 시작하기
-            </Button>
-
-            <Button
-              intent="secondary"
-              size="lg"
-              onClick={() => navigate("/product")}
-              leftIcon={<KeyIcon />}
-              aria-label="제품 페이지로 이동"
-            >
-              제품 더 알아보기
-            </Button>
-          </motion.div>
+        {/* 기능 배지 */}
+        <motion.div variants={heroItem}>
+          <FeatureBadge
+            intent="brand"
+            border={true}
+            shape="pill"
+            leftIcon={<CrownIcon />}>
+            PASSWORD MANAGER
+          </FeatureBadge>
         </motion.div>
+
+        {/* 내용 */}
+        <motion.h1
+          variants={heroItem}
+          className="text-6xl lg:text-7xl font-black leading-tight text-text-light dark:text-white"
+        >
+          비밀번호 관리의<br />
+          <span className="gradient-text">새로운 표준</span>
+        </motion.h1>
+
+        {/* 버튼 */}
+        <motion.div
+          variants={heroItem}
+          className="flex flex-col sm:flex-row justify-center gap-4"
+        >
+          <Button
+            intent="primary"
+            size="lg"
+            onClick={() => navigate("/download")}
+            leftIcon={<DownloadIcon />}
+            aria-label="다운로드 페이지로 이동"
+          >
+            무료로 시작하기
+          </Button>
+
+          <Button
+            intent="secondary"
+            size="lg"
+            onClick={() => navigate("/product")}
+            leftIcon={<KeyIcon />}
+            aria-label="제품 페이지로 이동"
+          >
+            제품 더 알아보기
+          </Button>
+        </motion.div>
+      </motion.div>
     </section >
   );
 };

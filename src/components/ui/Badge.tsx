@@ -1,5 +1,5 @@
-import React, { forwardRef } from "react";
-import { motion, useReducedMotion, type HTMLMotionProps } from "framer-motion";
+import { forwardRef } from "react";
+import { motion, type HTMLMotionProps } from "framer-motion";
 import { tv, type VariantProps } from "tailwind-variants";
 import { twMerge } from "tailwind-merge";
 import clsx from "clsx";
@@ -37,18 +37,17 @@ export const badge = tv({
   defaultVariants: { size: "xl", intent: "crown", appearance: "soft" },
 });
 
-type IconLike = React.ComponentType<{ className?: string }>;
-const ICONS: Record<NonNullable<VariantProps<typeof badge>["intent"]>, IconLike> = {
+
+const ICONS = {
   crown: CrownIcon, download: DownloadIcon, key: KeyIcon, shield: ShieldIcon,
 };
 
-export interface BadgeProps
-  extends Omit<HTMLMotionProps<"div">, "color">,
-    VariantProps<typeof badge> {}
+export type BadgeProps =
+  Omit<HTMLMotionProps<"div">, "color"> &
+  VariantProps<typeof badge>;
 
 export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
   ({ intent, size, appearance, elevated, className, ...rest }, ref) => {
-    const prefersReduced = useReducedMotion();
 
     // 1) 인덱싱용으로만 안전한 기본값 보정
     const resolvedIntent: NonNullable<BadgeVariants["intent"]> = intent ?? "crown";
@@ -62,10 +61,10 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
     return (
       <motion.div
         ref={ref}
-        initial={prefersReduced ? false : { opacity: 0, scale: 0.92 }}
-        whileInView={prefersReduced ? undefined : { opacity: 1, scale: 1 }}
+        initial={{ opacity: 0, scale: 0.92 }}
+        whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, amount: 0.6 }}
-        transition={prefersReduced ? undefined : { type: "spring", stiffness: 500, damping: 20 }}
+        transition={{ type: "spring", stiffness: 500, damping: 20 }}
         className={twMerge(root(), clsx(className))}
         {...rest}
       >

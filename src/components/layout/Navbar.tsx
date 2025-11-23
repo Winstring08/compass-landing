@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTheme } from '../../contexts/ThemeContext';
-import { ShieldIcon, SunIcon, MoonIcon, MenuIcon, CloseIcon } from '../Icons';
+import { SunIcon, MoonIcon, MenuIcon, CloseIcon } from '../Icons';
 import { motion, AnimatePresence } from 'framer-motion';
 import { button } from '@/styles/recipes/button';
 import { Button, NavLinkButton } from '../ui/Button';
